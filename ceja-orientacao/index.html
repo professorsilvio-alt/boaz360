@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CEJA Orientações — Boaz 360</title>
+  <meta name="description" content="Acessando o sistema de orientação do CEJA via Boaz 360." />
+  <meta http-equiv="refresh" content="4; url=https://professorsilvio-alt.github.io/ceja-orientacao/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../logo-boaz.png" />
+  <style>
+    :root {
+      --bg: #050d1a;
+      --teal: #14b8a6;
+      --teal-light: #2dd4bf;
+      --cyan: #06b6d4;
+      --blue: #3b82f6;
+      --green: #10b981;
+      --text: #f0f6ff;
+      --text-muted: #94a3b8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Background grid */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+      pointer-events: none;
+    }
+
+    /* Glows */
+    .glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: pulse 4s ease-in-out infinite;
+    }
+    .glow-1 {
+      width: 500px; height: 500px;
+      background: rgba(59,130,246,0.08);
+      top: -150px; left: -150px;
+    }
+    .glow-2 {
+      width: 400px; height: 400px;
+      background: rgba(16,185,129,0.07);
+      bottom: -100px; right: -100px;
+      animation-delay: 2s;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+
+    /* Card */
+    .card {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      padding: 56px 48px;
+      background: rgba(13,31,53,0.8);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 8px 64px rgba(0,0,0,0.5), 0 0 60px rgba(59,130,246,0.06);
+      max-width: 480px;
+      width: 90%;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Boaz logo area */
+    .boaz-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
+      gap: 10px;
+    }
+    .boaz-logo img {
+      height: 48px;
+      width: auto;
+      filter: drop-shadow(0 2px 12px rgba(59,130,246,0.3));
+    }
+
+    /* System icon */
+    .system-icon {
+      width: 80px; height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #3b82f6, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 36px;
+      box-shadow: 0 4px 32px rgba(59,130,246,0.35);
+      animation: iconPop 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.3s both;
+    }
+
+    @keyframes iconPop {
+      from { opacity: 0; transform: scale(0.5); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .system-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .system-name .blue { color: #3b82f6; }
+    .system-name .bold  { color: #f0f6ff; }
+
+    .system-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      line-height: 1.6;
+    }
+
+    /* Divider */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      border-radius: 2px;
+      margin: 0 auto 28px;
+    }
+
+    /* Redirect message */
+    .redirect-msg {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      background: rgba(255,255,255,0.07);
+      border-radius: 100px;
+      height: 6px;
+      overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, #3b82f6, #10b981);
+      border-radius: 100px;
+      width: 0%;
+      animation: fill 4s linear forwards;
+      box-shadow: 0 0 12px rgba(59,130,246,0.5);
+    }
+
+    @keyframes fill {
+      from { width: 0%; }
+      to   { width: 100%; }
+    }
+
+    /* Button */
+    .btn-now {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #3b82f6, #10b981);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      box-shadow: 0 0 24px rgba(59,130,246,0.35);
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-bottom: 16px;
+    }
+    .btn-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 32px rgba(59,130,246,0.55);
+    }
+
+    .back-link {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--blue); }
+
+    /* Powered by */
+    .powered {
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .powered span {
+      background: linear-gradient(135deg, #3b82f6, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+
+  <div class="card">
+    <!-- Boaz logo -->
+    <div class="boaz-logo">
+      <img src="../logo-boaz.png" alt="Boaz 360" />
+    </div>
+
+    <!-- System icon -->
+    <div class="system-icon">🎓</div>
+
+    <h1 class="system-name">
+      <span class="blue">CEJA</span><span class="bold"> Orientações</span>
+    </h1>
+    <p class="system-desc">
+      Portal de orientação e autoatendimento do CEJA.<br />
+      Você será redirecionado automaticamente.
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="redirect-msg">Redirecionando em alguns segundos…</p>
+
+    <div class="progress-wrap">
+      <div class="progress-bar"></div>
+    </div>
+
+    <a href="https://professorsilvio-alt.github.io/ceja-orientacao/" class="btn-now" id="accessBtn">
+      ⚡ Acessar agora
+    </a>
+    <a href="/" class="back-link">← Voltar para Boaz 360</a>
+
+    <div class="powered">
+      Powered by <span>Boaz 360</span> — Tecnologia que transforma negócios
+    </div>
+  </div>
+
+  <script>
+    // Redirect after 4 seconds
+    setTimeout(() => {
+      window.location.href = 'https://professorsilvio-alt.github.io/ceja-orientacao/';
+    }, 4000);
+  </script>
+</body>
+</html>
