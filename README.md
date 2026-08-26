@@ -32,6 +32,7 @@ boaz360/
 | Capelum Gestão Escolar | ✅ Online | capelum.com |
 | CEJA — Orientações | ✅ Online | boaz360.com/ceja-orientacao |
 | Moto Clubes | ✅ Online | silviofreitasii.pythonanywhere.com |
+| SEPE Jurídico | ✅ Online | sepejuridico.boaz360.com |
 
 ## Deploy
 
