@@ -28,10 +28,10 @@ boaz360/
 
 | Sistema | Status | URL |
 |---------|--------|-----|
-| Mest SoluTIon | ✅ Online | mestsolutionti.pythonanywhere.com |
+| Mest SoluTIon | ✅ Online | mest.boaz360.com |
 | Capelum Gestão Escolar | ✅ Online | capelum.com |
-| CEJA — Orientações | 🔨 Em construção | — |
-| Moto Clubes | 🔨 Em construção | — |
+| CEJA — Orientações | ✅ Online | boaz360.com/ceja-orientacao |
+| Moto Clubes | ✅ Online | silviofreitasii.pythonanywhere.com |
 
 ## Deploy
 
