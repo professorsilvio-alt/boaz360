@@ -30,7 +30,7 @@ boaz360/
 |---------|--------|-----|
 | Mest SoluTIon | ✅ Online | mest.boaz360.com |
 | Capelum Gestão Escolar | ✅ Online | capelum.com |
-| CEJA — Orientações | ✅ Online | boaz360.com/ceja-orientacao |
+| CEJA — Orientações | ✅ Online | cejarosasoares.pythonanywhere.com |
 | Moto Clubes | ✅ Online | silviofreitasii.pythonanywhere.com |
 | SEPE Jurídico | ✅ Online | sepejuridico.boaz360.com |
 
