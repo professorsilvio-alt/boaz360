@@ -172,6 +172,14 @@ if (contatoForm) {
 
       showFeedback('✅ Mensagem preparada! Você será redirecionado para o WhatsApp para envio.', 'success');
 
+      // Dispara evento de conversão para o Google Ads
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'Contato',
+          event_label: assunto
+        });
+      }
+
       setTimeout(() => {
         window.open(waUrl, '_blank', 'noopener,noreferrer');
         contatoForm.reset();
@@ -209,5 +217,18 @@ document.querySelectorAll('.orbit-ring').forEach(ring => {
   });
 });
 
+// ── TRACKING WHATSAPP CLICKS ──────────────────────────────
+document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+  link.addEventListener('click', () => {
+    if (typeof gtag === 'function') {
+      gtag('event', 'contact', {
+        event_category: 'WhatsApp',
+        event_label: 'Clique no WhatsApp'
+      });
+    }
+  });
+});
+
 // ── INIT ──────────────────────────────────────────────────
 handleScroll();
+
